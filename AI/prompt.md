@@ -229,7 +229,8 @@ EG :
 
 
 
-![image-20230713191047023](/Users/zhuangzeping/Library/Application Support/typora-user-images/image-20230713191047023.png)
+![image](https://github.com/htllog/StudyNotes/assets/118370026/84c1d4cb-7f99-4fb6-b12d-8b43583ab845)
+
 
 
 
@@ -247,5 +248,6 @@ EG :
 
 
 
-![image-20230713191515727](/Users/zhuangzeping/Library/Application Support/typora-user-images/image-20230713191515727.png)
+![image](https://github.com/htllog/StudyNotes/assets/118370026/f3c2e7af-000c-4bba-899e-60710f20c4ef)
+
 
