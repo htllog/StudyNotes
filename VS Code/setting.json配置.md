@@ -1,6 +1,7 @@
 > 配置
 
-![setting](/Users/zhuangzeping/Downloads/setting.jpg)
+![image](https://github.com/htllog/StudyNotes/assets/118370026/22b476f0-dd42-4d7a-b733-cfdaaa83cf33)
+
 
 
 
