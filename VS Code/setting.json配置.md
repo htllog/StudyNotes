@@ -6,7 +6,7 @@
 
 > setting.json 文件配置
 
-```json
+```
 {
   // vscode默认启用了根据文件类型自动设置tabsize的选项
   "editor.detectIndentation": false,
