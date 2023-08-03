@@ -32,7 +32,9 @@ Shadow DOM 实际上是一个独立的子 DOM Tree，通过有限的接口的外
 
 ## 主流浏览器的支持情况
 
+各浏览器支持详细情况，请参考如下链接：
 
+https://caniuse.com/ 
 
 ## 可以附加 Shadow DOM 的元素
 
