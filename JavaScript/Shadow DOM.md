@@ -10,7 +10,9 @@
 
 Shadow DOM 允许在文档（ Document ）渲染时插入一棵「子 DOM  树」，并且这棵子树不在主 DOM 树中，同时为子树中的 DOM 元素和 CSS 提供了封装的能力。Shadow DOM 使得子树 DOM 与主文档的 DOM 保持分离，子 DOM 树中的 CSS 不会影响到主 DOM 树的内容，如下图所示：
 
-![image](https://github.com/htllog/StudyNotes/assets/118370026/a021e27e-ee71-464c-bc8d-d3cc6bcffe30)
+![image](https://github.com/htllog/StudyNotes/assets/118370026/1feffb1d-5ed7-48db-9e33-1bd485086f13)
+
+
 
 
 
