@@ -98,7 +98,7 @@ import dayjs from 'dayjs';
 
 export const ExampleComponent: React.FC = () => {
   const utcTime = '2023-07-18T12:34:56.789Z'; // 将其替换为 UTC 时间
-  const localTime = dayjs.utc(utcTime).local().format('YYYY-MM-DD HH:mm:ss.SSS');
+  const localTime = dayjs.utc(utcTime).local().format('YYYY-MM-DD HH:mm:ss.SSS'); // 时:分:秒:毫秒
 
   return (
     <div>
