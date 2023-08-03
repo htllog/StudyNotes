@@ -55,6 +55,9 @@ const inputRoot = input.attachShadow({mode: 'open'})
 
 提供的代码将引发 `DOMException` 错误，并显示消息“无法在 Element 上执行 attachShadow：无法在 void 或 select 元素上创建 Shadow root 
 
+![image](https://github.com/htllog/StudyNotes/assets/118370026/90d19450-0414-40d3-9a5f-6a42075aa3b0)
+
+
 ### 支持的元素
 
 任何有效的名称且可独立存在的自定义元素 && 下表：
