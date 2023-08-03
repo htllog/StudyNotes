@@ -98,7 +98,7 @@ import dayjs from 'dayjs';
 
 export const ExampleComponent: React.FC = () => {
   const utcTime = '2023-07-18T12:34:56.789Z'; // 将其替换为 UTC 时间
-  const localTime = dayjs.utc(utcTime).local().format('YYYY-MM-DD HH:mm:ss.SSS');
+  const localTime = dayjs.utc(utcTime).local().format('YYYY-MM-DD HH:mm:ss.SSS'); // 时:分:秒:毫秒
 
   return (
     <div>
@@ -112,6 +112,6 @@ export const ExampleComponent: React.FC = () => {
 
 
 
-在示例中，该 `dayjs.utc(utcTime).local()` 函数用于将给定的 UTC 时间 ( `utcTime`) 转换为步骤中设置的用户本地时区。然后使用该 `format` 方法对结果进行格式化，以所需的格式显示它
+在示例中，该 `dayjs.utc(utcTime).local()` 函数用于将给定的 UTC 时间 ( `utcTime` ) 转换为步骤中设置的用户本地时区。然后使用该 `format` 方法对结果进行格式化，以所需的格式显示它
 
 通过将 Day.js 的默认时区设置为用户的本地时区，可以在考虑用户的时区的情况下，有效地将 UTC 时间转换为 React 应用程序的全局本地时间
