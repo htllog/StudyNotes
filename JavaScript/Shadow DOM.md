@@ -12,9 +12,7 @@ Shadow DOM 允许在文档（ Document ）渲染时插入一棵「子 DOM  树�
 
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/1feffb1d-5ed7-48db-9e33-1bd485086f13)
 
-
-
-
+图示注解如下 ⬇️ 
 
 
 ### Shadow DOM 相关技术概念
