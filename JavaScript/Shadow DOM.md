@@ -39,7 +39,7 @@ Shadow DOM 实际上是一个独立的子 DOM Tree，通过有限的接口的外
 
 应用中，对 CSS 的隔离也会加快选择器的匹配速度，即使可能是微妙级的提升，但是在极端的性能情况下，仍然是有效的手段
 
-Shadow DOM 最大的用处应该是隔离外部环境用于封装组件。估计浏览器的开发者们也意识到通过 HTML / CSS 来实现浏览器内建的原生组件更容易，如上边提到的浏览器原生组件 `input`，`video`，还有 `textarea`，`select`，`audio` 等，也都是由 HTML/CSS 渲染出来的
+Shadow DOM 最大的用处应该是隔离外部环境用于封装组件。估计浏览器的开发者们也意识到通过 HTML / CSS 来实现浏览器内建的原生组件更容易，如上边提到的浏览器原生组件 `input`，`video`，还有 `textarea`，`select`，`audio` 等，也都是由 HTML / CSS 渲染出来的
 
 ## 主流浏览器的支持情况
 
@@ -118,7 +118,6 @@ const inputRoot = input.attachShadow({mode: 'open'})
 </html>
 ```
 
-
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/1d5d1089-d077-4af5-b6df-16e09943852a)
 
 `Element.attachShadow`  的参数 `shadowRootInit`  的 `mode`  选项用于设定封装模式,它有两个可选的值 ：
@@ -132,13 +131,13 @@ const inputRoot = input.attachShadow({mode: 'open'})
 
 使用 Shadow DOM 的步骤如下：
 
-1. **创建 Shadow Root：**在一个元素上使用 `element.attachShadow({ mode: 'open' })` 方法来创建一个 Shadow Root（影子根）。`mode` 参数可以是 `open` 或 `closed`
+1. **创建 Shadow Root：** 在一个元素上使用 `element.attachShadow({ mode: 'open' })` 方法来创建一个 Shadow Root（影子根）。`mode` 参数可以是 `open` 或 `closed`
 
    `open` 允许外部访问 Shadow DOM，而 `closed` 则不允许
 
-2.   **将内容插入 Shadow DOM：**将组建的结构和样式通过 DOM 操作插入到 Shadow DOM 中。可以使用 Shadow DOM 提供的 DOM 方法来操作内部的 DOM
+2. **将内容插入 Shadow DOM：** 将组建的结构和样式通过 DOM 操作插入到 Shadow DOM 中。可以使用 Shadow DOM 提供的 DOM 方法来操作内部的 DOM
 
-3. **设置样式和样式作用域：**在 Shadow DOM 中，样式只影响组建内部。可以在 Shadow DOM 内部定义样式，并确保这些样式只应用于 Shadow DOM 内部
+3. **设置样式和样式作用域：** 在 Shadow DOM 中，样式只影响组建内部。可以在 Shadow DOM 内部定义样式，并确保这些样式只应用于 Shadow DOM 内部
 
 
 
@@ -190,7 +189,7 @@ const inputRoot = input.attachShadow({mode: 'open'})
 
 在上述示例中，通过自定义元素 `customElements.define` 定义了一个名为 `my-button` 的自定义按钮组件。在组件的构造函数中，创建了一个 Shadow Root，并在其中插入了一个按钮。按钮的样式定义在了 Shadow DOM 内部，不受外部样式的影响
 
-**Tips：**Shadow DOM 只是 Web 组件技术的一部分，用于创建封装和隔离的组件。在实际应用中，可以将 Shadow DOM 与其他 Web 组件技术（如 Custom Elements 和 HTML Templates）一起使用，以构建更加模块化和可维护的前端组件
+**Tips：** Shadow DOM 只是 Web 组件技术的一部分，用于创建封装和隔离的组件。在实际应用中，可以将 Shadow DOM 与其他 Web 组件技术（如 Custom Elements 和 HTML Templates）一起使用，以构建更加模块化和可维护的前端组件
 
 ### Shadow DOM 在 React 使用
 
@@ -198,10 +197,10 @@ Shadow DOM 可以与 React 一起使用，但需注意以下**问题**和**注�
 
 React 本身并不直接支持 Shadow DOM。但可以在 React 组件中使用 Shadow DOM，以便在组件内部实现封装和隔离
 
-1. **自定义元素和 Web 组件：**React 组件可以被包装在自定义元素内，然后在该自定义元素上创建 Shadow DOM。这样可以在 React 组件内部使用 Shadow DOM 技术，将样式和结构封装
-2. **组件封装和隔离：**使用 Shadow DOM 可以在 React 组件内部实现封装和 DOM 结构的隔离。对于构建可重用的组件来说，可以避免外部组件和样式冲突
-3. **注意样式冲突：**使用 Shadow DOM 可以避免外部样式影响内部，但也可能导致一些样式冲突。在设计和使用时需注意，确保组件在不同上下文能正常使用
-4. **React 渲染机制：**React 的渲染机制是基于虚拟 DOM，Shadow DOM 也维护独立的 DOM 树。结合使用过程中，需要注意 React 渲染和 Shadow DOM 的更新机制，避免出现不一致的情况
+1. **自定义元素和 Web 组件：** React 组件可以被包装在自定义元素内，然后在该自定义元素上创建 Shadow DOM。这样可以在 React 组件内部使用 Shadow DOM 技术，将样式和结构封装
+2. **组件封装和隔离：** 使用 Shadow DOM 可以在 React 组件内部实现封装和 DOM 结构的隔离。对于构建可重用的组件来说，可以避免外部组件和样式冲突
+3. **注意样式冲突：** 使用 Shadow DOM 可以避免外部样式影响内部，但也可能导致一些样式冲突。在设计和使用时需注意，确保组件在不同上下文能正常使用
+4. **React 渲染机制：** React 的渲染机制是基于虚拟 DOM，Shadow DOM 也维护独立的 DOM 树。结合使用过程中，需要注意 React 渲染和 Shadow DOM 的更新机制，避免出现不一致的情况
 
 
 
