@@ -4,6 +4,7 @@
 
 Shadow DOM（影子 DOM）是一种浏览器技术，用于创建封装的组件化 DOM 树。它允许你将一部分 DOM 树和样式封装在一个隔离的作用域内，这样可以避免外部样式和JavaScript代码影响到内部的组件。Shadow DOM 是 Web 组件技术的一部分，能够帮助开发者构建更加模块化和可重用的前端组件
 
+![image](https://github.com/htllog/StudyNotes/assets/118370026/f5b47b41-1d59-4403-84ed-b29432adc6be)
 
 
 上述图片中，可以预见 `input` 其实也附加了 Shadow DOM，比如，在 Chrome 中尝试给一个 Input 加上 `placeholder` ，通过 DevTools 便能看到，其实文字是在 ShadowRoot 下的一个 Id 为 `palcehoder` 的 div 中
@@ -118,6 +119,7 @@ const inputRoot = input.attachShadow({mode: 'open'})
 ```
 
 
+![image](https://github.com/htllog/StudyNotes/assets/118370026/1d5d1089-d077-4af5-b6df-16e09943852a)
 
 `Element.attachShadow`  的参数 `shadowRootInit`  的 `mode`  选项用于设定封装模式,它有两个可选的值 ：
 
