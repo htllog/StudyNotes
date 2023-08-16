@@ -1,0 +1,256 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数组练习</title>
+  </head>
+  <body>
+    <script>
+      // ** 数组练习 **
+
+      // 1. 遍历数组
+      const frutis = ["apple", "banana", "orange"];
+
+      // 1.1 for 循环
+      for (let i; i < frutis.length; i++) {
+        console.log(frutis[i]);
+      }
+
+      // 1.2 forEach 方法
+      frutis.forEach((fruit) => {
+        console.log(fruit);
+      });
+
+      // 1.3 for...of 循环
+      for (const fruit of frutis) {
+        console.log(fruit);
+      }
+
+      // 2. 使用 map 转换数组
+      const numbers = [1, 2, 3, 4, 5];
+
+      const double_numbers = numbers.map((num) => num * 2);
+
+      console.log(double_numbers); // [2, 4, 6, 8, 10]
+
+      // 3. 筛选数组元素
+      const ages = [25, 30, 18, 12, 40, 22];
+
+      const adults = ages.filter((age) => age >= 18);
+
+      console.log(adults); // [25, 30, 18, 40, 22]
+
+      // 4. 查找特定元素
+      const names = ["Alice", "Bob", "Charlie", "David"];
+
+      const findName = "Charlie";
+
+      const foundName = names.find((name) => name === findName);
+
+      console.log(foundName); // 'Charlie'
+
+      // 5. 数组转换为字符串
+      const colors = ["red", "yellow", "green", "blue", "white"];
+
+      const joinedColors = colors.join(",");
+
+      console.log(joinedColors); // red,yellow,green,blue,white
+
+      // 6. 数组是否包含特定元素
+      const animals = ["dog", "cat", "bird", "lion", "tigger"];
+
+      const hasTigger = animals.includes("tigger");
+
+      console.log(hasTigger); // true
+
+      const hasElephant = animals.includes("elephant");
+
+      console.log(hasElephant); // false
+
+      // 7. 使用 redeuce 进行累加
+      const add_nums = [1, 3, 5, 7, 9];
+
+      const initialValue = 0;
+
+      const sum = add_nums.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+      );
+
+      console.log(sum); // 25
+
+      // 8. 数组展开运算符
+      const arr1 = [1, 2, 3, 4];
+
+      const arr2 = [5, 6, 7, 8];
+
+      const combined = [...arr1, ...arr2];
+
+      console.log(combined); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+      // 9. 结合 filter 和 map 进行复杂操作
+      // eg: 筛选年纪大于30的员工名字
+      const employees = [
+        { name: "Alice", age: 28 },
+        { name: "Bob", age: 35 },
+        { name: "Charlie", age: 22 },
+      ];
+
+      const screen_employerss_names = employees
+        .filter((employee) => employee.age < 30)
+        .map((screenEmployee) => screenEmployee.name);
+
+      console.log(screen_employerss_names); // ['Alice', 'Charlie']
+
+      // ** 常见的数组操作 **
+
+      // 1. 遍历和操作数组元素
+      const numbers_array = [1, 2, 3, 4, 5];
+
+      // 遍历打印每个元素
+      numbers_array.forEach((num) => console.log(num));
+
+      // 使用 map 转换数组
+      const double_numbers_array = numbers_array.map((num) => num * 2);
+
+      console.log(double_numbers_array); // [2, 4, 6, 8, 10]
+
+      // 使用 filter 筛选偶数
+      const evenNumbers = numbers_array.filter((num) => num % 2 === 0);
+
+      console.log(evenNumbers); // [2, 4]
+
+      // 使用 reduce 求和
+      const sum_numbers_array = numbers.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+
+      console.log(sum_numbers_array); // 15
+
+      // 2. 查找和判断数组元素
+      const find_names_array = ["Alice", "Bob", "Charlie"];
+
+      // 使用 includes 判断是否存在特定元素
+      const hasBob = find_names_array.includes("Bob");
+
+      console.log(hasBob); // true
+
+      // 使用 find 查找满足条件的元素
+
+      // 关于 find
+      /**
+       * 如果需要在数组中找到对应元素的索引，请使用 findIndex()
+       * 如果需要查找某个值的索引，请使用 Array.prototype.indexOf()。（它类似于 findIndex()，但只是检查每个元素是否与值相等，而不是使用测试函数
+       * 如果需要查找数组中是否存在某个值，请使用 Array.prototype.includes()。同样，它检查每个元素是否与值相等，而不是使用测试函数
+       * 如果需要查找是否有元素满足所提供的测试函数，请使用 Array.prototype.some()
+       */
+      //
+
+      // find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined
+      const foundNameLongerThan4 = find_names_array.find(
+        (name) => name.length > 4
+      );
+
+      console.log(foundNameLongerThan4); // Alice
+
+      // 使用 some 和 every 判断是否满足特定条件
+      // some() 方法测试数组中是否至少有一个元素通过了由提供的函数实现的测试。如果在数组中找到一个元素使得提供的函数返回 true，则返回 true；否则返回 false。它不会修改数组
+      // every() 方法测试一个数组内的所有元素是否都能通过指定函数的测试。它返回一个布尔值
+      const someNameLongerThan3 = find_names_array.some(
+        (name) => name.length > 3
+      );
+
+      console.log(someNameLongerThan3); // true
+
+      const allNameLongerThan2 = find_names_array.every(
+        (name) => name.length > 2
+      );
+
+      console.log(allNameLongerThan2); // true
+
+      // 2. 操作数组元素
+      const vegetables = ["carrot", "tomato", "onions"];
+
+      // 2.1 添加元素到数组末尾
+      vegetables.push("mushroom");
+
+      console.log(vegetables); // ['carrot', 'tomato', 'onions', 'mushroom']
+
+      //  2.2 删除数组末尾元素
+      vegetables.pop();
+
+      console.log(vegetables); // ['carrot', 'tomato', 'onions']
+
+      // 2.3 在数组开头添加元素
+      vegetables.unshift("chili");
+
+      console.log(vegetables); //  ['chili', 'carrot', 'tomato', 'onions']
+
+      // 2.4 反转数组元素
+      vegetables.reverse();
+
+      console.log(vegetables); // ['onions', 'tomato', 'carrot', 'chili']
+
+      // 2.5 使用 splice 添加、删除元素
+      // splice(start, deleteCount, item1, item2, itemN) start:从 0 开始计算的索引，表示要开始改变数组的位置 deleteCount 可选一个整数，表示数组中要从 start 开始删除的元素数量
+      // item1, …, itemN 可选 从 start 开始要加入到数组中的元素。如果不指定任何元素，splice() 将只从数组中删除元素
+
+      vegetables.splice(1, 1, "cabbage", "okra");
+
+      console.log(vegetables); // ['onions', 'cabbage', 'okra', 'carrot', 'chili']
+
+      // 3. 展开运算符创建新数组
+      const arr3 = [0, 1, 2, 3];
+
+      const arr4 = [6, 7, 8, 9];
+
+      // 合并两个数组
+      const combinedArr = [...arr3, ...arr4];
+
+      console.log(combinedArr); // [0, 1, 2, 3, 6, 7, 8, 9]
+
+      const newArr = [...arr3, 4, 5, ...arr4];
+
+      console.log(newArr); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+      // 4. 使用箭头函数进行数组操作
+      const agesArr = [25, 30, 35, 40];
+
+      const adultAges = agesArr
+        .filter((age) => age >= 18)
+        .map((age) => `age: ${age})`);
+
+      console.log(adultAges); //  ['age: 25)', 'age: 30)', 'age: 35)', 'age: 40)']
+
+      // 5. 使用 findIndex 和 splice 删除元素
+      // findIndex() 方法返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回 -1
+      // splice() 方法通过移除或者替换已存在的元素和/或添加新元素就地改变一个数组的内容
+      // splice(start, deleteCount, item1, item2, itemN)
+
+      const items = ["apple", "banana", "orange"];
+
+      // 找到并删除 "banana"
+      const indexToDelete = items.findIndex((item) => item === "banana");
+
+      if (indexToDelete !== -1) {
+        items.splice(indexToDelete, 1);
+      }
+
+      console.log(items); // ['apple', 'orange']
+
+      // 5. 对数组排序
+      const scores = [80, 65, 90, 50, 75];
+
+      // 从小到大排序
+      const ascendingScores = scores.slice().sort((a, b) => a - b);
+
+      console.log(ascendingScores); //  [50, 65, 75, 80, 90]
+
+      // 从大到小排序
+      const descendingScores = scores.slice().sort((a, b) => b - a);
+
+      console.log(descendingScores); // [90, 80, 75, 65, 50]
+    </script>
+  </body>
+</html>
