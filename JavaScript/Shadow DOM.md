@@ -2,7 +2,7 @@
 
 ## 什么是 Shadow DOM
 
-Shadow DOM（影子 DOM）是一种浏览器技术，用于创建封装的组件化 DOM 树。它允许你将一部分 DOM 树和样式封装在一个隔离的作用域内，这样可以避免外部样式和JavaScript代码影响到内部的组件。Shadow DOM 是 Web 组件技术的一部分，能够帮助开发者构建更加模块化和可重用的前端组件
+Shadow DOM（影子 DOM）是一种浏览器技术，用于创建封装的组件化 DOM 树。它允许你将一部分 DOM 树和样式封装在一个隔离的作用域内，这样可以避免外部样式和JavaScript代码影响到内部的组件。Shadow DOM 是 Web 组件技术的一部分，能够帮助开发者构建模块化和可重用的前端组件
 
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/f5b47b41-1d59-4403-84ed-b29432adc6be)
 
