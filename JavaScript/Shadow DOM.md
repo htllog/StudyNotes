@@ -283,11 +283,11 @@ const SensitiveInfoComponent = ({
 
 export const ProjectInformation = () => {
   return (
-    <div>
+    <>
       <h1>React with Shadow DOM</h1>
       {/* 渲染 SensitiveInfoComponent，传递敏感信息 */}
       <SensitiveInfoComponent sensitiveData="Confidential Data" />
-    </div>
+    </>
   );
 };
 ```
