@@ -63,8 +63,6 @@ src/
 
 > 写例包含组件 A 传值 （ title ， context ）给组件 B 的过程，示例将遵循通用的项目文件夹结构和文件命名规范
 
-
-
 项目文件夹结构：
 
 ```markdown
@@ -203,9 +201,9 @@ export default componentReducer;
 
 ```
 
-
-
 在最新版本的Redux中，`createStore` 函数的用法略有变化，不再直接从 `redux` 模块中导入。相反，你需要从 `redux` 中导入 `configureStore` 函数，它取代了 `createStore` ，并提供了更多的功能
+
+
 
 **src/redux/store.ts:**
 
@@ -261,8 +259,6 @@ import App from './App';
 ReactDOM.render(<App />, document.getElementById('root'));
 
 ```
-
-
 
 示例展示了如何在 React 应用中使用 Redux 来在 ComponentA 中传递数据（title 和 context），并在ComponentB 中获取数据。通过 dispatch 一个 action 并在 Reducer 中更新状态，实现数据的传递和共享
 
