@@ -2,8 +2,6 @@
 
 在 antd 中，自定义表单规则要求返回一个 Promise，因为 Promise 可以很好地处理异步操作，同时也支持同步操作。当你需要执行一些异步操作（例如，请求服务器验证输入的值）时，Promise 可以让你的验证逻辑变得更加简洁和易于理解
 
-
-
 * Promise 可以很好地处理异步操作，同时支持同步操作
 * 使用 Promise 可以让验证逻辑更加简洁和易于理解
 
@@ -79,8 +77,6 @@ export const CustomValidationForm = () => {
 };
 
 ```
-
-
 
 在示例中，该 `validateEmailOnServer` 函数返回一个 Promise，该 Promise 模拟异步服务器调用以检查电子邮件地址是否已注册。该`checkIfEmailIsRegisteredOnServer`函数是一个模拟的服务器端函数，用于检查电子邮件是否已注册
 

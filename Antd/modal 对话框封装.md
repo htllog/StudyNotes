@@ -1,10 +1,6 @@
 > 关于 Antd modal 对话框封装和使用
 
-
-
 样式使用 [**tailwind**](https://tailwindcss.com/) 书写，实际使用和组件修改根据实际需求修改
-
-
 
 ```tsx
 import { Modal } from "antd";
@@ -58,7 +54,7 @@ export const ModalBox = forwardRef<ModalBoxRef, ModalBoxProps>(
 
 
 
-> 使用示例：
+> 使用示例
 
 ```tsx
 const aiCreationRef = useRef<ModalBoxRef>(null);
