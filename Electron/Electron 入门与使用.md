@@ -86,11 +86,9 @@ yarn add --dev electron
 
 任何 Electron 应用程序的入口都是 `main` 文件。 这个文件控制了**主进程**，它运行在一个完整的 Node.js 环境中，负责控制您应用的生命周期，显示原生界面，执行特殊操作并管理渲染器进程
 
-执行期间，Electron 将依据应用中 `package.json`配置下 `main` 字段中配置的值查找此文件，应该在 [应用脚手架](https://www.electronjs.org/zh/docs/latest/tutorial/quick-start#scaffold-the-project)步骤中配置。
+执行期间，Electron 将依据应用中 `package.json`配置下 `main` 字段中配置的值查找此文件，应该在 [应用脚手架](https://www.electronjs.org/zh/docs/latest/tutorial/quick-start#scaffold-the-project)步骤中配置
 
 初始化这个`main`文件，需要在您项目的根目录下创建一个名为 `main.js` 的空文件
-
-
 
 ```js
 const { BrowserWindow, app, ipcMain } = require("electron");
