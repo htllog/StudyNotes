@@ -6,30 +6,38 @@ Shadow DOM（影子 DOM）是一种浏览器技术，用于创建封装的组件
 
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/f5b47b41-1d59-4403-84ed-b29432adc6be)
 
-
 上述图片中，可以预见 `input` 其实也附加了 Shadow DOM，比如，在 Chrome 中尝试给一个 Input 加上 `placeholder` ，通过 DevTools 便能看到，其实文字是在 ShadowRoot 下的一个 Id 为 `palcehoder` 的 div 中
+
+
 
 ### Google 浏览器查看标签属性内部结构（ Shadow DOM ）
 
 *Settings > Preferences > Elements > Show user agent shadow DOM*
 
+
+
 ### Shadow DOM 结构树
 
 Shadow DOM 允许将隐藏的 DOM 树附加到常规的 DOM 树中 —— 它以 shadow root 节点为起始根节点，在这个根节点的下方，可以是任意元素，和普通的 DOM 元素一样
 
-Shadow DOM 允许在文档（ Document ）渲染时插入一棵「子 DOM  树」，并且这棵子树不在主 DOM 树中，同时为子树中的 DOM 元素和 CSS 提供了封装的能力。Shadow DOM 使得子树 DOM 与主文档的 DOM 保持分离，子 DOM 树中的 CSS 不会影响到主 DOM 树的内容，如下图所示：
+Shadow DOM 允许在文档（ Document ）渲染时插入一棵「子 DOM  树」，并且这棵子树不在主 DOM 树中，同时为子树中的 DOM 元素和 CSS 提供了封装的能力。Shadow DOM 使得子树 DOM 与主文档的 DOM 保持分离，子 DOM 树中的 CSS 不会影响到主 DOM 树的内容，图示注解如下 ⬇️ ：
 
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/1feffb1d-5ed7-48db-9e33-1bd485086f13)
 
-图示注解如下 ⬇️ 
+
 
 
 ### Shadow DOM 相关技术概念
 
 * Shadow host：一个常规 DOM 节点，Shatdow DOM 会被附加到这个节点上
+
 * Shadow tree：Shatdow DOM 内部的 DOM 树
+
 * Shadow boundary：Shadow DOM 结束的地方，也是常规 DOM 开始的地方
+
 * Shadow root：Shadow tree 的根节点 
+
+  
 
 ## 性能优势 - 组件隔离（ Shadow DOM ）
 
@@ -41,6 +49,8 @@ Shadow DOM 实际上是一个独立的子 DOM Tree，通过有限的接口的外
 
 Shadow DOM 最大的用处应该是隔离外部环境用于封装组件。估计浏览器的开发者们也意识到通过 HTML / CSS 来实现浏览器内建的原生组件更容易，如上边提到的浏览器原生组件 `input`，`video`，还有 `textarea`，`select`，`audio` 等，也都是由 HTML / CSS 渲染出来的
 
+
+
 ## 主流浏览器的支持情况
 
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/a99760eb-5a89-4db5-a8cc-df1030fcd006)
@@ -48,6 +58,8 @@ Shadow DOM 最大的用处应该是隔离外部环境用于封装组件。估计
 各浏览器支持详细情况，请参考如下链接：
 
 https://caniuse.com/ 
+
+
 
 ## 可以附加 Shadow DOM 的元素
 
@@ -69,6 +81,7 @@ const inputRoot = input.attachShadow({mode: 'open'})
 ![image](https://github.com/htllog/StudyNotes/assets/118370026/90d19450-0414-40d3-9a5f-6a42075aa3b0)
 
 
+
 ### 支持的元素
 
 任何有效的名称且可独立存在的自定义元素 && 下表：
@@ -81,6 +94,8 @@ const inputRoot = input.attachShadow({mode: 'open'})
 | **header** |  **main**   |  **nav**   |
 |   **p**    | **section** |  **span**  |
 
+
+
 ## Shadow DOM 应用场景
 
 1. **Web 组件库：** 如果你正在开发一个 Web 组件库，希望提供独立、可定制的 UI 组件，那么使用 Shadow DOM 可以有效隔离每个组件的样式和结构，避免组件之间的样式冲突，同时也可以提供更清晰的组件接口
@@ -90,6 +105,8 @@ const inputRoot = input.attachShadow({mode: 'open'})
 5. **独立的小应用：** 如果你正在构建一个独立的小应用，使用 Shadow DOM 可以帮助你隔离应用的样式和结构，使其更加独立和可维护
 6. **保护敏感信息：** 如果你的应用中包含一些敏感信息，可以使用 Shadow DOM 来隔离这些信息，防止恶意脚本访问
 7. **在不同环境中使用相同组件：** 使用 Shadow DOM 可以帮助你在不同的 Web 环境中使用相同的组件，而不必担心样式和结构冲突
+
+
 
 ## Shadow DOM 应用实例
 
@@ -139,8 +156,6 @@ const inputRoot = input.attachShadow({mode: 'open'})
 
 3. **设置样式和样式作用域：** 在 Shadow DOM 中，样式只影响组建内部。可以在 Shadow DOM 内部定义样式，并确保这些样式只应用于 Shadow DOM 内部
 
-
-
 下为如何使用 Shadow DOM 创建一个简单的自定义按钮：
 
 ```html
@@ -185,11 +200,14 @@ const inputRoot = input.attachShadow({mode: 'open'})
     </script>
   </body>
 </html>
+
 ```
 
 在上述示例中，通过自定义元素 `customElements.define` 定义了一个名为 `my-button` 的自定义按钮组件。在组件的构造函数中，创建了一个 Shadow Root，并在其中插入了一个按钮。按钮的样式定义在了 Shadow DOM 内部，不受外部样式的影响
 
 **Tips：** Shadow DOM 只是 Web 组件技术的一部分，用于创建封装和隔离的组件。在实际应用中，可以将 Shadow DOM 与其他 Web 组件技术（如 Custom Elements 和 HTML Templates）一起使用，以构建更加模块化和可维护的前端组件
+
+
 
 ### Shadow DOM 在 React 使用
 
@@ -201,8 +219,6 @@ React 本身并不直接支持 Shadow DOM。但可以在 React 组件中使用 S
 2. **组件封装和隔离：** 使用 Shadow DOM 可以在 React 组件内部实现封装和 DOM 结构的隔离。对于构建可重用的组件来说，可以避免外部组件和样式冲突
 3. **注意样式冲突：** 使用 Shadow DOM 可以避免外部样式影响内部，但也可能导致一些样式冲突。在设计和使用时需注意，确保组件在不同上下文能正常使用
 4. **React 渲染机制：** React 的渲染机制是基于虚拟 DOM，Shadow DOM 也维护独立的 DOM 树。结合使用过程中，需要注意 React 渲染和 Shadow DOM 的更新机制，避免出现不一致的情况
-
-
 
 ```tsx
 import React, { useEffect, useRef } from "react";

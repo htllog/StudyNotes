@@ -4,6 +4,8 @@
 
 一行代码实现一个方法的网站
 
+
+
 # if - Else 用 || 或 ?? 运算符简化
 
 * [逻辑或操作符](https://github.com/htllog/StudyNotes/blob/main/JavaScript/%E9%80%BB%E8%BE%91%E6%88%96.md) 需要注意 **0** 和 **' '** 也会被认为是 `false`
@@ -43,7 +45,10 @@ function processObject(obj) {
 var exampleObj = null;
 
 processObject(exampleObj);
+
 ```
+
+
 
 # 输入框非空的判断
 
@@ -55,6 +60,8 @@ if (value !== null && value != undefind && value) {}
 // 等价写法
 if ((value ?? '') !== '') {}
 ```
+
+
 
 # includes 的正确使用姿势
 
@@ -83,6 +90,8 @@ function Screen(obj) {
   }
 }
 ```
+
+
 
 # 防止崩溃的可选链 ?.
 
@@ -129,6 +138,7 @@ console.log(arr?.[0]) // 1
 console.log(arr?.[5]) // undefined
 console.log(arr?.[0]?.toString()) // 1
 ```
+
 
 
 # 快速生成数组
