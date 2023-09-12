@@ -130,9 +130,6 @@ console.log(arr?.[5]) // undefined
 console.log(arr?.[0]?.toString()) // 1
 ```
 
-# 逻辑空赋值 ??=
-
-
 
 # 快速生成数组
 
