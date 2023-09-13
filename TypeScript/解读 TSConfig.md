@@ -28,13 +28,11 @@ TypeScript 配置文件（ tsconfig.json ）是用于配置 TypeScript 项目的
 
 ```
 
-
-
 基础示例中，使用 `compilerOptions` 配置选项指定了 TypeScript 编译器的选项。其中：
 
-- `"target": "es6"` 指定编译的目标 JavaScript 版本为 ES6。
-- `"module": "commonjs"` 指定模块的生成方式为 CommonJS。
-- `"outDir": "dist"` 指定输出目录为 "dist"。
+- `"target": "es6"` 指定编译的目标 JavaScript 版本为 ES6
+- `"module": "commonjs"` 指定模块的生成方式为 CommonJS
+- `"outDir": "dist"` 指定输出目录为 "dist"
 
 同时，使用 `include` 和 `exclude` 配置选项分别指定了需要编译的源文件的包含规则和排除规则
 
@@ -52,7 +50,6 @@ TypeScript 配置文件（ tsconfig.json ）是用于配置 TypeScript 项目的
 "compilerOptions": {
   "target": "es6"
 }
-
 ```
 
 
@@ -65,7 +62,6 @@ TypeScript 配置文件（ tsconfig.json ）是用于配置 TypeScript 项目的
 "compilerOptions": {
   "outDir": "dist"
 }
-
 ```
 
 
@@ -78,22 +74,18 @@ TypeScript 配置文件（ tsconfig.json ）是用于配置 TypeScript 项目的
 "compilerOptions": {
   "strict": true
 }
-
 ```
 
 
 
 ### lib
 
-`lib` 选项用于指定 TypeScript 编译器可以使用的 JavaScript 标准库的列表。默认情况下，
-
-TypeScript 编译器会根据目标版本自动选择合适的库
+`lib` 选项用于指定 TypeScript 编译器可以使用的 JavaScript 标准库的列表。默认情况下，TypeScript 编译器会根据目标版本自动选择合适的库
 
 ```json
 "compilerOptions": {
   "lib": ["es6", "dom"]
 }
-
 ```
 
 
@@ -106,7 +98,6 @@ TypeScript 编译器会根据目标版本自动选择合适的库
 "compilerOptions": {
   "sourceMap": true
 }
-
 ```
 
 
@@ -121,7 +112,6 @@ TypeScript 编译器会根据目标版本自动选择合适的库
     "@/*": ["src/*"]
   }
 }
-
 ```
 
 
@@ -134,7 +124,6 @@ TypeScript 编译器会根据目标版本自动选择合适的库
 "compilerOptions": {
   "allowJs": true
 }
-
 ```
 
 
@@ -157,14 +146,9 @@ TypeScript 编译器会根据目标版本自动选择合适的库
   }
 }
 
-
 ```
 
-
-
 在上面的示例中，我们设置了 `esModuleInterop` 和 `allowSyntheticDefaultImports` 属性为 true，以支持对 ES 模块的兼容性导入
-
-
 
 更多的 `compilerOptions` 配置选项可以参考 TypeScript 官方文档：[Compiler Optionsopen in new window](https://www.typescriptlang.org/tsconfig#compiler-options).
 
@@ -174,8 +158,6 @@ TypeScript 编译器会根据目标版本自动选择合适的库
 
 `include` 和 `exclude` 配置选项用于指定哪些文件应该包含在编译过程中，以及哪些文件应该排除在编译过程之外
 
-
-
 `include` 是一个文件或者文件夹的数组，用于指定需要编译的文件或文件夹的路径模式
 
 ```json
@@ -183,10 +165,7 @@ TypeScript 编译器会根据目标版本自动选择合适的库
   "src/**/*.ts",
   "test/**/*.ts"
 ]
-
 ```
-
-
 
 `exclude` 是一个文件或者文件夹的数组，用于指定需要排除的文件或文件夹的路径模式
 
@@ -195,10 +174,7 @@ TypeScript 编译器会根据目标版本自动选择合适的库
   "node_modules",
   "dist"
 ]
-
 ```
-
-
 
 上述示例中，选择将 `src` 文件夹和 `test` 文件夹下的所有 TypeScript 文件包含在编译过程中，并排除了 `node_modules` 文件夹和 `dist` 文件夹
 
@@ -213,16 +189,12 @@ TypeScript 编译器会根据目标版本自动选择合适的库
   "src/main.ts",
   "src/utils.ts"
 ]
-
 ```
-
-
 
 `composite` 配置选项用于启用 TypeScript 的项目引用功能，允许我们将一个 TypeScript 项目作为另一个项目的依赖
 
 ```json
 "composite": true
-
 ```
 
 
@@ -252,7 +224,6 @@ TypeScript 支持通过 `extends` 配置选项从其他的 tsconfig.json 文件�
     "src/**/*.ts"
   ]
 }
-
 ```
 
 在上述示例中，我们通过 `extends` 指定了一个基础配置文件 `tsconfig.base.json`，然后在当前的 `tsconfig.json` 中添加了额外的编译选项和文件包含规则
@@ -263,19 +234,14 @@ TypeScript 支持通过 `extends` 配置选项从其他的 tsconfig.json 文件�
 
 定制化 tsconfig.base 可以让我们在多个项目中共享和复用配置，提高开发效率。下面是一些步骤来封装自己的 TSConfig 为一个库：（下述代码使用 NPM ，yarn 方法使用后续补充）
 
-
-
 1. 初始化创建一个新的 TypeScript 项目作为我们的库项目
 
    ```sh
    mkdir my-tsconfig-lib
    cd my-tsconfig-lib
    npm init -y
-   
    ```
-
    
-
 2. 创建 tsconfig.json 文件
 
    在项目根目录下创建一个名为 `tsconfig.json` 的文件，并将 TSConfig 的配置内容添加到其中
@@ -290,11 +256,10 @@ TypeScript 支持通过 `extends` 配置选项从其他的 tsconfig.json 文件�
      "include": ["src/**/*.ts"],
      "exclude": ["node_modules", "dist"]
    }
-   
    ```
-
+   
    上述为一个示例的 TSConfig 配置，根据自己的需求进行相应的修改
-
+   
 3. 创建包入口文件
 
    为了能够在其他项目中使用我们的库，需要创建一个入口文件来导出我们的 TSConfig
@@ -305,58 +270,52 @@ TypeScript 支持通过 `extends` 配置选项从其他的 tsconfig.json 文件�
    import * as tsconfig from './tsconfig.json';
    
    export default tsconfig;
-   
    ```
-
+   
    在上述代码中，我们将 `tsconfig.json` 导入为一个模块，并使用 `export default` 将其导出
-
+   
 4. 构建和发布
 
-   现在可以使用 TypeScript 编译器将我们的代码构建为 JavaScript，以便在其他项目中使用。
+   现在可以使用 TypeScript 编译器将我们的代码构建为 JavaScript ，以便在其他项目中使用。
 
    但在使用前，应确保你已经在项目中安装了 TypeScript：
 
    ```sh
    npm install typescript --save-dev
-   
    ```
-
+   
    然后，在 `package.json` 中添加构建脚本：
-
+   
    ```json
    {
      "scripts": {
        "build": "tsc"
      }
    }
-   
    ```
-
+   
    最后，运行构建命令进行构建：
 
    ```sh
    npm run build
-   
    ```
-
-   构建完成后，我们的库文件将位于 `dist` 目录下。
-
+   
+   构建完成后，我们的库文件将位于 `dist` 目录下
+   
 5. 发步到 NPM
 
    首先，创建一个 NPM 账号，并登录到 NPM：
 
    ```sh
    npm login
-   
    ```
-
-   然后，在项目根目录下运行以下命令发布库：
-
-   ```sh
+   
+然后，在项目根目录下运行以下命令发布库：
+   
+```sh
    npm publish
-   
    ```
-
+   
    发布成功后，我们的 TSConfig 库就可以在其他项目中使用了
 
 6. 在其他项目使用
@@ -365,22 +324,20 @@ TypeScript 支持通过 `extends` 配置选项从其他的 tsconfig.json 文件�
 
    ```sh
    npm install my-tsconfig-lib --save-dev
-   
    ```
-
-   然后，在目标项目的 `tsconfig.json` 文件中使用我们的 TSConfig：
-
-   ```json
+   
+然后，在目标项目的 `tsconfig.json` 文件中使用我们的 TSConfig：
+   
+```json
    {
      "extends": "my-tsconfig-lib"
    }
-   
    ```
-
+   
    通过 `extends` 配置选项，我们可以继承和使用我们的 TSConfig 
 
 7. 总结
 
-   通过 tsconfig.json 文件，可以配置 TypeScript 编译器的行为，包括编译选项、文件包含与排除规则、输出目录等。合理配置 tsconfig.json 可以帮助我们根据项目需求进行灵活的 TypeScript 编译设置。
+   通过 tsconfig.json 文件，可以配置 TypeScript 编译器的行为，包括编译选项、文件包含与排除规则、输出目录等。合理配置 tsconfig.json 可以帮助我们根据项目需求进行灵活的 TypeScript 编译设置
 
    详细的 TypeScript 配置文件的参考信息可以在 TypeScript 官方文档中找到：[tsconfig.json](https://www.typescriptlang.org/tsconfig)
