@@ -132,7 +132,7 @@ C#定义自定义属性，将其应用于多个实体，并通过反射检索例
    ```c#
    public class Person
    {
-     	// MyCustom 更改此设置以使用您的自定义属性“自定义”
+       // MyCustom 更改此设置以使用您的自定义属性“自定义”
        [MyCustom("This is the name property.")]
        public string Name { get; set; }
    
