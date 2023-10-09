@@ -147,4 +147,69 @@
    }
    ```
 
+
+
+> 直接注册和使用模块化方式注册
+
+1. **直接注册 AutoMapper **
+
+   ```c#
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddAutoMapper(cfg =>
+       {
+           cfg.CreateMap<Source, Destination>();
+           // 根据实际需要，添加更多映射配置
+       });
+   }
+   ```
+
    
+
+2. **模块化方式注册 AutoMapper **
+
+   自定义模块示例：
+
+   ```c#
+   public class AutoMapperModule : Module
+   {
+       protected override void Load(ContainerBuilder builder)
+       {
+           builder.Register(ctx => new MapperConfiguration(cfg =>
+           {
+               cfg.CreateMap<Source, Destination>();
+               // 根据实际需要，添加更多映射配置
+           }))
+           .AsSelf()
+           .SingleInstance();
+   
+           builder.Register(ctx => ctx.Resolve<MapperConfiguration>().CreateMapper())
+               .As<IMapper>()
+               .InstancePerLifetimeScope();
+       }
+   }
+   ```
+
+   
+
+   在 Startup 中使用模块注册：
+
+   ```
+   public void ConfigureServices(IServiceCollection services)
+   {
+       // 注册 AutoMapper 模块
+       services.AddAutoMapperModule();
+   }
+   ```
+
+   
+
+   Autofac 注册模块示例
+
+   ```c#
+   public void ConfigureContainer(ContainerBuilder builder)
+   {
+       builder.RegisterModule(new AutoMapperModule());
+   }
+   ```
+
