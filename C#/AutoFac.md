@@ -82,6 +82,8 @@ builder.Register(c => new MyClass()).InstancePerLifetimeScope();
 # IoC
 
 ## 控制反转原则
+![image](https://github.com/htllog/StudyNotes/assets/118370026/8be7e77e-a07f-48de-b971-69f508848df0)
+
 
 通过上图可以观察到：
 
@@ -106,6 +108,8 @@ builder.Register(c => new MyClass()).InstancePerLifetimeScope();
 
 
 ## IoC 框架
+![image](https://github.com/htllog/StudyNotes/assets/118370026/c48c5c17-8ba2-4f2b-9787-b0bf42d66c33)
+
 
 图 IoC 框架显示了我们如何实现这种解耦。最简单的方法是公开一个允许我们设置对象的方法。将地址对象的创建委托给 IoC 框架。IoC 框架可以是类、客户端或某种 IoC 容器。因此，IoC 框架创建地址对象并将此引用传递给客户类可将分为两步
 
