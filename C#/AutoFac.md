@@ -18,7 +18,7 @@
 
 ## 常见生命周期设置
 
-Autofac 最常见的生命周期设置是
+AutoFac 最常见的生命周期设置是
 
 - 单实例
 - 每个依赖项的实例
@@ -68,7 +68,7 @@ Assert.AreNotSame(a, b);
 
 ### 每个生命周期范围的实例
 
-- 每个生命周期范围（通常是HTTP请求或作用域）中创建一个实例，同一生命周期范围内解析得到的是同一个实例
+- 每个生命周期范围（通常是 HTTP 请求或作用域）中创建一个实例，同一生命周期范围内解析得到的是同一个实例
 - 适用于特定生命周期范围内共享的组件，如 Web 应用程序中的每个 HTTP 请求或自定义生命周期
 
 最终的基本生命周期模型是 per-lifetime-scope，使用 `InstancePerLifetimeScope()` 修饰符实现:
@@ -92,14 +92,14 @@ builder.Register(c => new MyClass()).InstancePerLifetimeScope();
 
 因此控制反转原则可以归纳为：
 
-1. **依赖倒置原则**（Dependency Inversion Principle，DIP）
+1. **依赖倒置原则**（ Dependency Inversion Principle，DIP ）
 
    - 高层模块不应该依赖于低层模块，它们都应该依赖于抽象
    - 抽象不应该依赖于细节，细节应该依赖于抽象
 
    这意味着我们应该通过抽象来定义系统的结构，而具体的实现应该依赖于抽象的定义
 
-2. **单一职责原则**（Single Responsibility Principle，SRP）
+2. **单一职责原则**（ Single Responsibility Principle，SRP ）
 
    - 一个类应该只有一个引起变化的原因
 
@@ -179,11 +179,11 @@ public class Program
 
 
 
-上述 demo 中，Autofac 体现了控制反转（ IoC ）原则的几个关键特点：
+上述 demo 中，AutoFac 体现了控制反转（ IoC ）原则的几个关键特点：
 
 1. **依赖注入**
 
-   Autofac 通过注册接口与实现类的关联，在需要使用服务时自动注入依赖。在 Main 方法中，我们只关心解析 `IMessageService` 接口，而不需要关心其具体实现类。这种依赖的注入方式称为依赖注入，它是 IoC 的一种具体实现
+   AutoFac 通过注册接口与实现类的关联，在需要使用服务时自动注入依赖。在 Main 方法中，我们只关心解析 `IMessageService` 接口，而不需要关心其具体实现类。这种依赖的注入方式称为依赖注入，它是 IoC 的一种具体实现
 
    ```c#
    builder.RegisterType<EmailService>().As<IMessageService>();
@@ -194,7 +194,7 @@ public class Program
 
 2. **控制反转**
 
-   控制反转意味着将对象的创建和管理权交给外部容器（ Autofac ），而不是由代码直接创建。传统模式中，会在 Main 方法中直接创建 `EmailService` 或 `SMSService` 的实例，但在 Autofac 通过容器解析实例，实现了对服务的控制反转
+   控制反转意味着将对象的创建和管理权交给外部容器（ AutoFac ），而不是由代码直接创建。传统模式中，会在 Main 方法中直接创建 `EmailService` 或 `SMSService` 的实例，但在 AutoFac 通过容器解析实例，实现了对服务的控制反转
 
    ```c#
    var emailService = container.Resolve<IMessageService>();
@@ -208,7 +208,7 @@ public class Program
 
 
 
-Autofac 的使用体现了 IoC 原则，在于体现将对象的创建和依赖的解析交给了容器，降低了代码之间的耦合度，使得系统更灵活、易于扩展和维护
+AutoFac 的使用体现了 IoC 原则，在于体现将对象的创建和依赖的解析交给了容器，降低了代码之间的耦合度，使得系统更灵活、易于扩展和维护
 
 传统模式中，对象的创建和依赖解析由代码直接控制，在 IoC 容器中，这些控制被反转，由容器负责管理对象的创建和依赖的注入
 
