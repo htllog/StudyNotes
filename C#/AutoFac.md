@@ -115,7 +115,7 @@ builder.Register(c => new MyClass()).InstancePerLifetimeScope();
 
 
 
-### Autofac体现
+### Autofac 体现
 
 创建接口和接口所需实现类：
 
