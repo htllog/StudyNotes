@@ -90,7 +90,7 @@ Bearer Token ( [RFC 6750  (opens new window)](http://www.rfcreader.com/#rfc6750)
 
    JWT 是一种用于创建和验证 Bearer Token 的标准。JWT 令牌通常被用于安全地传递用户身份和声明信息
 
-**Tips : **并非所有的身份验证方案都使用 Bearer Token 。有些身份验证方案可能需要用户名和密码 ( token )，而不是 Bearer Token。这些方案通常使用 Basic Authentication，其中用户名和密码以 Base64 编码的形式包含在请求头部
+**Tips** : 并非所有的身份验证方案都使用 Bearer Token 。有些身份验证方案可能需要用户名和密码 ( token )，而不是 Bearer Token。这些方案通常使用 Basic Authentication，其中用户名和密码以 Base64 编码的形式包含在请求头部
 
 
 
