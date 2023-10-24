@@ -120,7 +120,103 @@ Authorization: Bearer YOUR_TOKEN
 
 ## 配置 JWT（ JSON Web Token ）身份验证
 
+1. **安装 NuGet 包**
 
+   * `System.IdentityModel.Tokens.Jwt` : 用于创建和验证 JWT 令牌
+   * `Microsoft.AspNetCore.Authentication.JwtBearer` : 用于 ASP . NET Core 中启用 JWT 身份验证
+
+   ```c#
+   dotnet add package System.IdentityModel.Tokens.Jwt
+   dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+   ```
+
+   
+
+2. **配置身份验证服务**
+
+   ```c#
+   // 添加身份验证服务
+   services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     .AddJwtBearer(options =>
+   {
+   	options.TokenValidationParameters = new TokenValidationParameters
+   			{
+   					ValidateIssuer = false, 	// 是否验证发行者
+             ValidateAudience = false, // 是否验证接收者
+             ValidateLifetime = true, 	// 是否验证过期
+             IssuerSigningKey = new SymmetricSecurityKey(
+             Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"]))
+          };
+   });
+   ```
+
+   
+
+3. **配置 JWT 密钥**
+
+   在 `appsettings.json` 或其他配置文件中，设置 JWT 密钥和其他参数
+
+   ```json
+   "Authentication": {
+       "SecretKey": "This is a demo,this won't work, need a long string.So I lengthened it",
+       "ExpiresIn": "00:15:00" 
+   }
+   ```
+
+   
+
+4. **令牌签名**
+
+   对令牌进行签名，将字符串编码 UTF-8 ，`value`  不能低于 32 byte（出于安全性考虑）
+
+   确保 `_jwtSettings.Value` 包含足够的随机性和长度，以防止令牌被轻易猜测或破解
+
+   ```c#
+   var key = Encoding.UTF8.GetBytes(_jwtSettings.Value);
+   ```
+
+   
+
+5. **令牌属性设置**
+
+   ```c#
+   var tokenDescriptor = new SecurityTokenDescriptor
+   {
+       Subject = new ClaimsIdentity(new[]
+       {
+           new Claim(ClaimTypes.Name, user.UserName),
+           new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+       }),
+       IssuedAt = DateTime.UtcNow,
+       NotBefore = DateTime.UtcNow,
+       Expires = DateTime.UtcNow.Add(_jwtSettings.ExpiresIn),
+       SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+           SecurityAlgorithms.HmacSha256Signature)
+   };
+   ```
+
+   * `Subject` : JWT 令牌主题，通常包含用户有关信息
+   * `IssuedAt` : JWT 令牌签发时间，通常设置当前 UTC 时间
+   * `NotBefore` : JWT令牌的生效时间，通常设置当前 UTC 时间
+   * `Expires` : JWT令牌的过期时间，这里在应用程序配置过期时间
+   * `SigningCredentials` : JWT 令牌进行签名的凭据，指定 JWT 签名所需的密钥和签名算法`SecurityAlgorithms.HmacSha256Signature` 表示使用 HMAC-SHA256 算法进行签名
+
+   
+
+6. **使用身份验证**
+
+   在需要进行的身份验证控制器或路由上使用 `[Authorize]` 属性来进行访问
+
+   ```c#
+   [Authorize]
+   [ApiController]
+   [Route("api/[controller]")]
+   public class LoginController : ControllerBase
+   {
+   }
+   ```
+
+   
 
 ## 配置过期时间
 
@@ -141,12 +237,12 @@ Authorization: Bearer YOUR_TOKEN
 
 ```c#
 string expiresIn = configuration.GetValue<string>("Authentication:ExpiresIn");
+
 if (TimeSpan.TryParse(expiresIn, out TimeSpan expirationTime))
 {
     var tokenDescriptor = new SecurityTokenDescriptor
     {
         // ... 其他配置 ...
-
         Expires = DateTime.UtcNow.Add(expirationTime), // 设置过期时间
         // ... 其他配置 ...
     };
@@ -169,7 +265,11 @@ if (TimeSpan.TryParse(expiresIn, out TimeSpan expirationTime))
 2. 用户的权限得到有效的检查：前端验证只能提供基本的权限检查，但它不能替代后端验证，因为用户可以篡改前端验证或直接访问后端资源。只有后端验证能够确保用户具有访问受保护资源的权限
 3. 数据完整性得到维护：后端验证可以确保从客户端传递的数据符合应用程序的期望，并且不会对数据库或其他资源造成损害
 
-总之，前端验证和后端验证各有其重要性。前端验证提供了用户友好的反馈和提前检查，但不应信任前端验证，因为它可以被绕过。后端验证是应用程序的最后一道防线，确保应用程序的安全性和完整性。因此，安全的应用程序应该同时使用前端验证和后端验证
+前端验证提供了用户友好的反馈和提前检查，但不应信任前端验证，因为它可以被绕过
+
+后端验证是应用程序的最后一道防线，确保应用程序的安全性和完整性
+
+因此，安全的应用程序应该同时使用前端验证和后端验证
 
 ## 参考
 
