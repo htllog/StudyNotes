@@ -23,7 +23,7 @@ JSON Web 令牌 `xxxxx.yyyyy.zzzzz` 用 `.` 分隔三个部分组成，分别是
 
 * 签名：获取编码的标头、编码的有效负载、秘密、标头中指定的算法，然后对其进行签名，用于验证消息的完整性和真实性
 
-![image](https://github.com/htllog/StudyNotes/assets/118370026/7f32e6ba-dba9-4fcb-9104-124ee8b696e2)
+![image](https://github.com/htllog/StudyNotes/assets/118370026/6b54a207-f720-42b9-bb7a-84e942d904cb)
 
 
 
