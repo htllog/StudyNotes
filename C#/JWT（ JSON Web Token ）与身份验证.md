@@ -122,14 +122,13 @@ Authorization: Bearer YOUR_TOKEN
 
 1. **安装 NuGet 包**
 
-   * `System.IdentityModel.Tokens.Jwt` : 用于创建和验证 JWT 令牌
-   * `Microsoft.AspNetCore.Authentication.JwtBearer` : 用于 ASP . NET Core 中启用 JWT 身份验证
-
    ```c#
    dotnet add package System.IdentityModel.Tokens.Jwt
    dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
    ```
 
+   * `System.IdentityModel.Tokens.Jwt` : 用于创建和验证 JWT 令牌
+   * `Microsoft.AspNetCore.Authentication.JwtBearer` : 用于 ASP.NET Core 中启用 JWT 身份验证
    
 
 2. **配置身份验证服务**
@@ -273,7 +272,7 @@ if (TimeSpan.TryParse(expiresIn, out TimeSpan expirationTime))
 
 ## 参考
 
-[ JWT（ JSON Web Token ）](https://github.com/OhlinC/StudyNotes/blob/main/JWT（JSON Web Token）.md#jwtjson-web-token)
+[JWT(JSON Web Token)](https://github.com/OhlinC/StudyNotes/blob/main/JWT%EF%BC%88JSON%20Web%20Token%EF%BC%89.md)
 
 [JWT](https://jwt.io/introduction)
 
