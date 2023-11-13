@@ -130,7 +130,6 @@ Authorization: Bearer YOUR_TOKEN
    * `System.IdentityModel.Tokens.Jwt` : 用于创建和验证 JWT 令牌
    * `Microsoft.AspNetCore.Authentication.JwtBearer` : 用于 ASP.NET Core 中启用 JWT 身份验证
    
-
 2. **配置身份验证服务**
 
    ```c#
@@ -256,6 +255,8 @@ if (TimeSpan.TryParse(expiresIn, out TimeSpan expirationTime))
 
 前端的验证只是表面上的验证，用来提供用户友好的反馈。例如，前端可以在用户未提供用户名和密码或没有相关权限时显示错误消息，但前端验证可以被绕过。如果前端验证失败，用户仍然可以尝试手动访问受保护的资源，而这个时候，后端的验证就起作用了
 
+
+
 ### 后端验证
 
 后端的验证是应用程序的最后一道防线，它不仅仅依赖于用户提供的信息，还依赖于后端系统的内部状态和数据。通过后端验证，应用程序可以确保：
@@ -270,6 +271,8 @@ if (TimeSpan.TryParse(expiresIn, out TimeSpan expirationTime))
 
 因此，安全的应用程序应该同时使用前端验证和后端验证
 
+
+
 ## 参考
 
 [JWT(JSON Web Token)](https://github.com/OhlinC/StudyNotes/blob/main/JWT%EF%BC%88JSON%20Web%20Token%EF%BC%89.md)
@@ -277,4 +280,46 @@ if (TimeSpan.TryParse(expiresIn, out TimeSpan expirationTime))
 [JWT](https://jwt.io/introduction)
 
 [在线 JWT Token 解析解码](https://tooltt.com/jwt-decode/)
+
+
+
+# 角色权限实现
+
+## 将验证信息存储到 token 中
+
+> 将验证信息存储到令牌
+
+如果将用户登录成功后角色的权限（如 User Role 声明）正确添加到令牌（ token ）中。在实际验证请求中实际无需从动态获取数据库角色信息，因为令牌中包含的声明信息足以在授权中验证当前用户权限。
+
+（衍生：关于令牌未过期时，数据库动态更新导致实际令牌中的权限和当前最新用户所拥有的权限不匹配）
+
+这样子在 DataProvider 中可以关注验证用户的凭据并生成令牌，而不需要去查询数据库获取用户角色。具体的角色验证和授权中控制层中进行处理，使用 token 的声明决定用户是否有权限执行特定操作
+
+
+
+>好处
+
+* 可以提高性能，因为不需要每次在每次请求时都查询数据库以获取用户角色全新信息，而是在令牌中获取
+* 更安全，因为 token 中信息是由服务器签名的，不容易被伪造
+
+
+
+# 关于错误检查
+
+
+
+## 403 状态码
+
+常见的原因导致 403 错误包括：
+
+1. 缺乏身份验证：如果用户未成功认证，而控制器方法要求身份验证，服务器会返回 403 错误
+2. 缺乏授权：如果用户登录，但不具备访问所请求资源的必要权限或角色，服务器也会返回 403 错误
+
+为了解决这个问题，需要检查以下方面：
+
+1. 确保用户已成功登录，并且令牌中包含正确的相关声明
+2. 确保授权策略和控制器方法正确的，授权策略应该与控制器方法要求一致
+3. 如果有自定义的身份验证 or 授权逻辑，确保其正确验证用户和角色权限
+4. 检查服务器端和客户端的日志以查看更多错误信息，帮助定位为什么请求被拒绝
+
 
